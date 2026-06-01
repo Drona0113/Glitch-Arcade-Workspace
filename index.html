@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlitchArcade System Workspace</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="system-brand">
+                <h2>GLITCH_ARCADE</h2>
+                <div class="status-indicator"><span class="pulse"></span> SYSTEM_ONLINE</div>
+            </div>
+            
+            <div class="sidebar-controls">
+                <button id="toggle-modal" class="menu-btn primary-btn"><i class="ri-add-line"></i> Add New Task</button>
+                <button id="break-protocol-btn" class="menu-btn arcade-btn"><i class="ri-gamepad-line"></i> BREAK_PROTOCOL</button>
+            </div>
+            
+            <div class="system-footer">
+                
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <section class="board">
+                <div id="todo" class="task-column">
+                    <div class="column-heading">
+                        <h3>To Do</h3>
+                        <span class="count-badge right">0</span>
+                    </div>
+                    <div class="cards-wrapper"></div>
+                </div>
+
+                <div id="progress" class="task-column">
+                    <div class="column-heading">
+                        <h3>In Progress</h3>
+                        <span class="count-badge right">0</span>
+                    </div>
+                    <div class="cards-wrapper"></div>
+                </div>
+
+                <div id="done" class="task-column">
+                    <div class="column-heading">
+                        <h3>Done</h3>
+                        <span class="count-badge right">0</span>
+                    </div>
+                    <div class="cards-wrapper"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="task-modal" class="modal-overlay">
+        <div class="modal-bg"></div>
+        <div class="modal-center task-form-box">
+            <h3>[CREATE_NEW_TASK]</h3>
+            <input id="task-title-input" type="text" placeholder="Task Title"/>
+            <textarea id="task-desc-input" placeholder="Task Description"></textarea>
+            <div class="modal-actions">
+                <button id="cancel-new-task" class="btn-secondary">Cancel</button>
+                <button id="add-new-task" class="btn-primary">Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="engine-modal" class="modal-overlay">
+        <div class="modal-bg"></div>
+        <div class="engine-window">
+            
+            <button id="close-engine-btn" class="close-window-btn"></button>
+        
+            <div id="engine-root">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

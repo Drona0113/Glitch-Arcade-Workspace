@@ -1,0 +1,692 @@
+:root {
+    --bg-main: #06070d;
+    --bg-panel: #0e111a;
+    --bg-card: #161b26;
+    --text-white: #f8fafc;
+    --text-dim: #94a3b8;
+    --neon-blue: #00f0ff;
+    --neon-pink: #ff007f;
+    --neon-green: #39ff14;
+    --neon-red: #ff3131;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-white);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    height: 100vh;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    background-color: var(--bg-panel);
+    border-right: 1px solid #22293a;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.system-brand h2 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+}
+
+.status-indicator {
+    font-size: 0.75rem;
+    color: var(--neon-green);
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pulse {
+    width: 6px;
+    height: 6px;
+    background-color: var(--neon-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--neon-green);
+}
+
+.sidebar-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s ease;
+}
+
+.primary-btn {
+    background-color: var(--text-white);
+    color: var(--bg-main);
+}
+
+.arcade-btn {
+    background: transparent;
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.1);
+}
+
+.arcade-btn:hover {
+    background: var(--neon-pink);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 0, 127, 0.4);
+}
+
+/* Kanban Board Panel View */
+.workspace {
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.board {
+    display: flex;
+    gap: 25px;
+    height: 100%;
+}
+
+.task-column {
+    flex: 1;
+    background-color: var(--bg-panel);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #1e2538;
+}
+
+.task-column.hover-over {
+    border: 2px dashed var(--neon-blue);
+    background-color: rgba(0, 240, 255, 0.02);
+}
+
+.column-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #1e2538;
+    margin-bottom: 15px;
+}
+
+.count-badge {
+    background-color: var(--bg-card);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    border: 1px solid #2c354d;
+}
+
+.cards-wrapper {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* ==========================================
+/* PREMIUM CYBERPUNK MODAL UPGRADE
+/* ========================================== */
+
+.task-form-box {
+    background-color: var(--bg-panel);
+    border: 1px solid var(--neon-blue);
+    border-radius: 8px;
+    padding: 30px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Futuristic Technical Header */
+.task-form-box h3 {
+    font-size: 1.2rem;
+    color: var(--neon-blue);
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+    border-bottom: 1px solid #1e2538;
+    padding-bottom: 10px;
+}
+
+/* Styled Form Input Fields */
+.task-form-box input, 
+.task-form-box textarea {
+    background-color: var(--bg-main);
+    border: 1px solid #22293a;
+    padding: 14px;
+    color: var(--text-white);
+    border-radius: 4px;
+    outline: none;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Glowing Neon Target Focus Toggles */
+.task-form-box input:focus, 
+.task-form-box textarea:focus {
+    border-color: var(--neon-blue);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+    background-color: rgba(0, 240, 255, 0.01);
+}
+
+.task-form-box textarea {
+    height: 120px;
+    resize: none; /* Disables ugly default manual layout scaling handles */
+}
+
+/* Action Button Layout Alignment */
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Custom Styled Control Button Variations */
+.btn-secondary, 
+.btn-primary {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    outline: none;
+}
+
+/* Clean Muted Cancel Button */
+.btn-secondary {
+    background-color: #1e2538;
+    color: var(--text-dim);
+    border: 1px solid #2c354d;
+}
+
+.btn-secondary:hover {
+    background-color: #2c354d;
+    color: var(--text-white);
+}
+
+/* Bright Cyan Add Task Action Trigger */
+.btn-primary {
+    background-color: var(--neon-blue);
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Custom Task Card Component Styling */
+.task {
+    background-color: var(--bg-card);
+    border: 1px solid #22293a;
+    padding: 16px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    cursor: grab;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.task:hover {
+    border-color: var(--neon-blue);
+    transform: translateY(-2px);
+}
+
+.task h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-white);
+}
+
+.task p {
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+/* ==========================================
+/* PREMIUM KANBAN CARD BUTTON UPGRADES
+/* ========================================== */
+
+/* The container wrapper holding the quick actions */
+.card-actions {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Clean divider line */
+}
+
+/* Base styles for BOTH Edit and Delete buttons to expand sizing */
+.card-actions .open-edit-btn,
+.card-actions .delete-task-btn {
+    flex: 1; /* Forces them to split space evenly side-by-side */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 14px; /* ◄ Much larger padding for comfortable clicking */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* 🔵 CUSTOM EDIT IMAGE THEMING */
+.card-actions .open-edit-btn {
+    background: rgba(0, 240, 255, 0.05) !important;
+    border: 1px solid rgba(0, 240, 255, 0.3) !important;
+    color: var(--neon-blue, #00f0ff) !important;
+}
+
+.card-actions .open-edit-btn:hover {
+    background: rgba(0, 240, 255, 0.2) !important;
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+    text-shadow: 0 0 5px #00f0ff;
+    transform: translateY(-1px);
+}
+
+/* 🔴 CUSTOM DELETE THEMING */
+.card-actions .delete-task-btn {
+    background: rgba(255, 0, 85, 0.05) !important;
+    border: 1px solid rgba(255, 0, 85, 0.3) !important;
+    color: #ff0055 !important;
+}
+
+.card-actions .delete-task-btn:hover {
+    background: rgba(255, 0, 85, 0.2) !important;
+    box-shadow: 0 0 12px rgba(255, 0, 85, 0.3);
+    text-shadow: 0 0 5px #ff0055;
+    transform: translateY(-1px);
+}
+
+/* Image Editor Component Modal Layout Rules */
+.editor-workspace {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+}
+.editor-left {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+.editor-right {
+    flex: 1;
+    background-color: var(--bg-main);
+    border-left: 1px solid #2c354d;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+.editor-toolbar {
+    display: flex;
+    gap: 15px;
+}
+.cyber-action-btn {
+    background-color: #2c354d;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.cyber-action-btn.save {
+    background-color: var(--neon-blue);
+    color: #000;
+    font-weight: 600;
+}
+.editor-canvas-frame {
+    background-color: var(--bg-main);
+    border: 1px dashed #2c354d;
+    flex-grow: 1;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+#modal-image-canvas {
+    max-width: 100%;
+    max-height: 50vh;
+    display: none;
+}
+.editor-slider-wrapper {
+    margin-bottom: 15px;
+    width: 100%;
+}
+.slider-label-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+.editor-slider-wrapper input {
+    width: 100%;
+}
+
+
+
+/* Color updates for standard editor toolbars */
+.cyber-action-btn.danger {
+    background-color: var(--neon-red);
+    color: #fff;
+    font-weight: 600;
+}
+
+.modal-presets-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+}
+
+.preset-chip-btn {
+    background-color: var(--bg-card);
+    border: 1px solid #2c354d;
+    color: var(--text-dim);
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+    text-transform: capitalize;
+}
+
+.preset-chip-btn:hover {
+    border-color: var(--neon-blue);
+    color: #fff;
+    background-color: rgba(0, 240, 255, 0.05);
+}
+
+
+.cyber-action-btn.info-btn {
+    background-color: #1e2538;
+    color: var(--neon-blue);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    font-weight: 500;
+}
+
+.cyber-action-btn.info-btn:hover {
+    background-color: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none; /* Hidden by default baseline setup */
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+/* This class triggers the display when added via JavaScript */
+.modal-overlay.active {
+    display: flex !important;
+}
+
+
+/* ==========================================
+/* ARCADE SYSTEM GRID ALIGNMENTS (FIXED)
+/* ========================================== */
+
+.arcade-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;       /* Takes full height of the modal window */
+    width: 100%;        /* Takes full width of the modal window */
+    gap: 20px;
+}
+
+.arcade-header {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #090d16;
+    padding: 18px 30px; /* ◄ Expanded layout boundaries for maximum padding */
+    border-radius: 8px;
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 240, 255, 0.05);
+    gap: 20px; /* Forces clear separation blocks */
+}
+
+.arcade-board-frame {
+    flex-grow: 1;
+    background-color: #020306;
+    border: 2px solid #1e2538;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 40px; /* Added heavy outer margin spacing */
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.95);
+    position: relative;
+    min-height: 550px; /* ◄ Forces the board room to scale much larger vertically */
+}
+
+#arcade-grid-arena {
+    display: grid;
+    position: relative;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+    
+    /* CRUCIAL RULES: Forces the image string to fit and stretch completely behind the tiles */
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+.arcade-grid-cell {
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    width: 30px;        /* Matches your arcadeBlockSize variable */
+    height: 30px;       /* Matches your arcadeBlockSize variable */
+}
+
+/* Cyberpunk neon node markers */
+.arcade-snake-node {
+    background-color: var(--neon-blue) !important;
+    box-shadow: 0 0 10px var(--neon-blue);
+    border-radius: 4px;
+}
+
+.arcade-food-node {
+    background-color: var(--neon-pink) !important;
+    box-shadow: 0 0 12px var(--neon-pink);
+    border-radius: 50%;
+}
+
+
+.canvas-layer-container {
+    width: fit-content;
+    height: fit-content;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25);
+    background-color: #030407;
+}
+
+/* Individual Data Metric Grouping Wrappers */
+.arcade-stat-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ◄ Creates immediate breathing room between label and number data */
+    background: rgba(3, 4, 7, 0.6);
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid #1a2336;
+}
+
+/* Prominent Core Stream center block styling */
+.arcade-stat-group.main-stream {
+    flex-grow: 1;
+    justify-content: center;
+    max-width: 55%;
+    border-color: rgba(255, 0, 127, 0.2);
+}
+
+/* Dim cyber-punk technical index labels */
+.stat-label {
+    font-size: 0.7rem;
+    color: #4f6185;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Highly scannable digital readout figures */
+.arcade-stat-chip {
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--neon-blue);
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+    letter-spacing: 1.5px;
+}
+
+.arcade-stat-chip.text-pink {
+    color: var(--neon-pink);
+    text-shadow: 0 0 8px rgba(255, 0, 127, 0.4);
+}
+
+
+#engine-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(3, 4, 7, 0.95); /* Deep dark glass layer */
+    backdrop-filter: blur(8px);
+    z-index: 200; /* Higher than your boards and task inputs */
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#engine-modal.active {
+    display: flex !important;
+}
+
+/* The actual workspace frame container inside the modal */
+.engine-window-container {
+    background-color: var(--bg-panel);
+    border: 1px solid #2c354d;
+    width: 80vw;
+    height: 85vh;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+
+
+#arcade-grid-arena {
+    display: grid;
+    position: relative;
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.arcade-grid-cell {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(3, 4, 7, 0.65); /* ◄ Translucent layer lets picture peek through! */
+    width: 30px;
+    height: 30px;
+}
+
+
+
+/* Premium Styled Neon Escape Action Button */
+.close-engine-btn {
+    background: rgba(255, 0, 85, 0.1) !important;
+    border: 1px solid var(--neon-pink) !important;
+    color: var(--neon-pink) !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 0, 85, 0.6);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* White-hot cyber glow activation on mouse hover */
+.close-engine-btn:hover {
+    background: var(--neon-pink) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 15px var(--neon-pink), 0 0 25px var(--neon-pink);
+    transform: scale(1.03);
+}
+
+/* ⚡ FORCEFULLY WIPE OUT THE GHOST COMPRESSED BOX */
+#engine-modal > button:not(.close-engine-btn), 
+.arcade-wrapper ~ button,
+#engine-modal span:first-child:not(.stat-label) {
+    display: none !important;
+}
+
+#task-modal {
+    /* Your existing alignment properties (position: fixed, top, left, transform) */
+    z-index: 250 !important; /* ◄ Crucial: keeps form stacked above the background dimming mask */
+}
