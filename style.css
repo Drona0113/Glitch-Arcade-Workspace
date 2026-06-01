@@ -22,14 +22,13 @@ body {
     color: var(--text-white);
     height: 100vh;
     overflow: hidden;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 .app-container {
     display: grid;
     grid-template-columns: 280px 1fr;
-    height: 100vh;
+    padding-top:25px;
+    height: calc(100vh - 25px);
 }
 
 /* Sidebar Navigation */
