@@ -22,6 +22,8 @@ body {
     color: var(--text-white);
     height: 100vh;
     overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .app-container {
@@ -391,6 +393,7 @@ body {
     align-items: center;
     overflow: hidden;
     position: relative;
+    
 }
 #modal-image-canvas {
     max-width: 100%;
